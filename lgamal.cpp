@@ -45,13 +45,6 @@ int mul(int a, int b, int n) // формула a*b mod n
 	return sum;
 }
 
-/*****************************************************
-p - простое число
-0 < y < p-1
-0 < x < p-1
-m - шифруемое сообщение m < p
-*****************************************************/
-
 void crypt(int p, int n, int x, string inFileName, string outFileName)
 {
 	ifstream inf(inFileName.c_str());
@@ -99,7 +92,7 @@ void decrypt(int p, int x, string inFileName, string outFileName)
 
 		if (a != 0 && b != 0)
 		{
-			int deM = mul(b, power(a, p - 1 - x, p), p);// m=b*(a^x)^(-1)mod p =b*a^(p-1-x)mod p - трудно было найти нормальную формулу, в ней вся загвоздка
+			int deM = mul(b, power(a, p - 1 - x, p), p);// m=b*(a^x)^(-1)mod p =b*a^(p-1-x)mod p 
 			char m = static_cast<char>(deM);
 			outf << m;
 			cout << m;
